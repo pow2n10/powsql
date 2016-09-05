@@ -26,7 +26,10 @@ func NewPacketIO(conn Connection) *PacketIO {
 	p.wb = conn
 	p.Sequence = 0
 	return p
+}
 
+func (p *PacketIO) Reset() {
+	p.Sequence = 0
 }
 
 func (p *PacketIO) ReadPacket() (Packet, error) {

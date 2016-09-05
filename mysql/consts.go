@@ -21,27 +21,26 @@ const (
 	PacketHeaderERR  ProtocolConst = 0xff
 
 	//text protocol
-
-	ComSleep           ProtocolConst = 0
-	ComQuit            ProtocolConst = 0
-	ComInitDB          ProtocolConst = 0
-	ComQuery           ProtocolConst = 0
-	ComFieldList       ProtocolConst = 0
-	ComCreateDB        ProtocolConst = 0
-	ComDropDB          ProtocolConst = 0
-	ComRefresh         ProtocolConst = 0
-	ComShutdown        ProtocolConst = 0
-	ComStatistics      ProtocolConst = 0
-	ComProcessInfo     ProtocolConst = 0
-	ComConnect         ProtocolConst = 0
-	ComProcessKill     ProtocolConst = 0
-	ComDebug           ProtocolConst = 0
-	ComPing            ProtocolConst = 0
-	ComTime            ProtocolConst = 0
-	ComDelayedInsert   ProtocolConst = 0
-	ComChangeUser      ProtocolConst = 0
-	ComResetConnection ProtocolConst = 0
-	ComDaemon          ProtocolConst = 0
+	ComSleep           ProtocolConst = 0x00
+	ComQuit            ProtocolConst = 0x01
+	ComInitDB          ProtocolConst = 0x02
+	ComQuery           ProtocolConst = 0x03
+	ComFieldList       ProtocolConst = 0x04
+	ComCreateDB        ProtocolConst = 0x05
+	ComDropDB          ProtocolConst = 0x06
+	ComRefresh         ProtocolConst = 0x07
+	ComShutdown        ProtocolConst = 0x08
+	ComStatistics      ProtocolConst = 0x09
+	ComProcessInfo     ProtocolConst = 0x0a
+	ComConnect         ProtocolConst = 0x0b
+	ComProcessKill     ProtocolConst = 0x0c
+	ComDebug           ProtocolConst = 0x0d
+	ComPing            ProtocolConst = 0x0e
+	ComTime            ProtocolConst = 0x0f
+	ComDelayedInsert   ProtocolConst = 0x10
+	ComChangeUser      ProtocolConst = 0x11
+	ComResetConnection ProtocolConst = 0x1f
+	ComDaemon          ProtocolConst = 0x1d
 
 	//slave protocol
 
@@ -93,4 +92,6 @@ const (
 	CapabilityFlagClientCanHandleExpiredPasswords  ProtocolConst = 0x00400000
 	CapabilityFlagClientSessionTrack               ProtocolConst = 0x00800000
 	CapabilityFlagClientDeprecateEOF               ProtocolConst = 0x01000000
+
+	ResultFeildValueNULL ProtocolConst = 0xfb
 )

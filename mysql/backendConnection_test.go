@@ -1,6 +1,9 @@
 package mysql
 
-import "testing"
+import (
+	"log"
+	"testing"
+)
 
 func TestBackendConnectionReadInitialHanshake(t *testing.T) {
 
@@ -30,13 +33,21 @@ func TestBackendConnectionReadInitialHanshake(t *testing.T) {
 
 	if err != nil {
 		t.Error(err)
+		return
 	}
 
-	err = backendConnection.realConnect()
+	ret, err := backendConnection.ComQuery("use mysql;")
 
-	if err != nil {
-		t.Error(err)
-
+	for _, v := range ret.Rows {
+		log.Println(string(v))
 	}
+
+	ret, err = backendConnection.ComQuery("show tables;")
+
+	for _, v := range ret.Rows {
+		log.Println(string(v))
+	}
+
+	t.Error(ret, err)
 
 }

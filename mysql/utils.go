@@ -1,6 +1,7 @@
 package mysql
 
 import (
+	"bytes"
 	"crypto/sha1"
 	"encoding/binary"
 	"errors"
@@ -72,4 +73,21 @@ func ReadUint64(data []byte) (uint64, int, error) {
 func ReadInt64(data []byte) (int64, int, error) {
 	n, m, e := ReadUint64(data)
 	return int64(n), m, e
+}
+
+func ReadLenencStr(data []byte) ([]byte, int, error) {
+	len, n, err := ReadUint64(data)
+	if err != nil {
+		return nil, 0, err
+	}
+	return data[n : len+1], int(len) + n, nil
+
+}
+
+func ReadNULLStr(data []byte) ([]byte, int, error) {
+	index := bytes.IndexByte(data, 0x00)
+	if index < 0 {
+		index = len(data)
+	}
+	return data[:index], index, nil
 }

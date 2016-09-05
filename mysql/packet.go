@@ -109,10 +109,7 @@ func (packet *PacketERR) Unmarshal(data []byte, capability ProtocolConst) error 
 		pos += 5
 	}
 
-	index := bytes.IndexByte(data[pos:], 0x00)
-	packet.ErrorMessage = string(data[pos : pos+index])
-	pos += index
-
+	packet.ErrorMessage = string(data[pos:])
 	return nil
 }
 
